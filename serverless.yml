@@ -1,0 +1,61 @@
+org: luancastro
+app: serverless-app
+service: serverless-app
+
+custom:
+  tableName: "USERS"
+  esbuild:
+    bundle: true
+    minify: false
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [Users, Arn]
+  environment:
+    USERS: "USERS"
+
+functions:
+  api:
+    handler: src/index.handler
+    events:
+      - http:
+          path: users
+          method: post
+      - http:
+          path: users/{id}
+          method: get
+      - http:
+          path: users/{id}
+          method: put
+      - http:
+          path: users/{id}
+          method: delete
+      - http:
+          path: users
+          method: get
+resources:
+  Resources:
+    Users:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: "USERS"
