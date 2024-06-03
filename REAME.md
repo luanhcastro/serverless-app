@@ -9,7 +9,6 @@ Para rodar o projeto localmente, siga as instruções abaixo:
 ### Pré-requisitos
 
 - Node.js instalado na sua máquina
-- Conta na AWS com credenciais configuradas
 
 ### Instalação
 
