@@ -2,7 +2,7 @@
 
 Este é um projeto Serverless para gerenciamento de usuários.
 
-## Como Rodar o Projeto
+## Como Rodar os Testes
 
 Para rodar o projeto localmente, siga as instruções abaixo:
 
@@ -16,7 +16,7 @@ Para rodar o projeto localmente, siga as instruções abaixo:
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/meu-projeto.git
+git clone git@github.com:luanhcastro/serverless-app.git
 ```
 
 2. Instale as dependencias
